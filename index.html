@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uma Surpresa para Você</title>
+    <style>
+        /* Estilos gerais da página */
+        body {
+            margin: 0;
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: #fce4ec; /* Um fundo rosa bem clarinho */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Ocupa a altura inteira da tela */
+            text-align: center;
+            overflow: hidden; /* Evita barras de rolagem */
+        }
+
+        /* Estilo do botão inicial */
+        #botao-clique {
+            padding: 18px 35px;
+            font-size: 1.2em;
+            color: white;
+            background-image: linear-gradient(45deg, #ff4081, #d81b60); /* Gradiente rosa/vermelho */
+            border: none;
+            border-radius: 50px; /* Deixa o botão arredondado */
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        /* Efeito quando o mouse passa por cima (para computador) */
+        #botao-clique:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Container da surpresa que aparece depois do clique */
+        #conteudo-surpresa {
+            display: none; /* Começa escondido */
+            animation: fadeIn 1.5s; /* Animação de aparição */
+            padding: 20px;
+        }
+
+        /* Estilo da foto */
+        #nossa-foto {
+            max-width: 25%; /* A foto se ajusta à tela do celular */
+            height: auto;
+            border-radius: 15px; /* Bordas arredondadas na foto */
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            margin-bottom: 25px; /* Espaço entre a foto e o texto */
+        }
+
+        /* Estilo do texto romântico */
+        #texto-romantico {
+            font-size: 1.1em;
+            color: #444;
+            line-height: 1.6;
+            padding: 0 10px; /* Para o texto não colar nas bordas do celular */
+        }
+
+        /* Animação de Fade In (surgimento suave) */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button id="botao-clique">Clique aqui, meu amor</button>
+
+    <div id="conteudo-surpresa">
+        <img id="nossa-foto" src="WhatsApp Image 2025-06-11 at 21.35.50.jpeg" alt="Nossa Foto Especial">
+        
+        <p id="texto-romantico">
+            Eu te amo, da forma mais sincera que eu conheço, da forma mais paciente e amorosa.
+            Eu te amo, não pelo que tem por fora, mas pelo o que tu guarda á dentro.
+        </p>
+    </div>
+
+    <audio id="musica-romantica" src="Henrique e Juliano - ROMÂNTICO (Manifesto Musical 2) (mp3cut.net).mp3"></audio>
+
+    <script>
+        // Pega os elementos da página que vamos usar
+        const botao = document.getElementById('botao-clique');
+        const conteudo = document.getElementById('conteudo-surpresa');
+        const musica = document.getElementById('musica-romantica');
+
+        // Função que será executada quando o botão for clicado
+        function revelarSurpresa() {
+            // 1. Esconde o botão
+            botao.style.display = 'none';
+            
+            // 2. Mostra o conteúdo da surpresa (foto e texto)
+            conteudo.style.display = 'block';
+            
+            // 3. Toca a música
+            musica.play();
+        }
+
+        // Adiciona o "ouvinte" de clique ao botão
+        botao.addEventListener('click', revelarSurpresa);
+    </script>
+
+</body>
+</html>
