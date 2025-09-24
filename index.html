@@ -4,129 +4,114 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Feliz 3 Meses</title>
-
-<!-- ===== FONTE ROMÂNTICA ===== -->
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-
 <style>
-/* ===== RESET E BASE ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body {
-    font-family: 'Open Sans', sans-serif;
-    background: linear-gradient(135deg, #ffd6e8 0%, #fff0f5 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    overflow: hidden;
-    text-align: center;
-    padding: 20px;
-}
+    /* ===== ESTILO GERAL ===== */
+    body {
+        margin: 0;
+        font-family: 'Helvetica Neue', sans-serif;
+        background: #fce4ec;   /* Rosa clarinho */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        text-align: center;
+    }
 
-/* ===== BOTÃO INICIAL ===== */
-#btn-inicio {
-    padding: 18px 40px;
-    font-size: 1.4em;
-    color: #fff;
-    background: linear-gradient(45deg, #ff4f8b, #d81b60);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    transition: all 0.3s ease;
-}
-#btn-inicio:hover {
-    transform: scale(1.07);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
-}
+    /* ===== BOTÃO INICIAL ===== */
+    #btn-inicio {
+        padding: 18px 35px;
+        font-size: 1.3em;
+        color: white;
+        background-image: linear-gradient(45deg, #ff4081, #d81b60);
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+    #btn-inicio:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
 
-/* ===== CONTEÚDO SURPRESA ===== */
-#surpresa {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    animation: fadeIn 1.2s ease forwards;
-    width: 100%;
-    max-width: 600px;
-}
+    /* ===== CONTEÚDO SURPRESA ===== */
+    #surpresa {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        animation: fadeIn 1.2s ease;
+        width: 100%;
+        height: 100%;
+    }
 
-/* ===== SLIDER ===== */
-.slider {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    aspect-ratio: 4/3;
-    overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    margin-bottom: 25px;
-}
-.slides {
-    display: flex;
-    width: 400%; /* 4 imagens */
-    height: 100%;
-    animation: slideShow 16s infinite;
-}
-.slides img {
-    width: 100%;
-    object-fit: cover;
-}
+    /* ===== SLIDES ===== */
+    .slider {
+        position: relative;
+        width: 90%;
+        max-width: 500px;
+        height: 300px;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        margin-bottom: 25px;
+    }
+    .slides {
+        display: flex;
+        width: 400%; /* 4 imagens */
+        height: 100%;
+        animation: slideShow 16s forwards; /* anima uma vez e para */
+        animation-fill-mode: forwards;
+    }
+    .slides img {
+        width: 100%;
+        object-fit: cover;
+    }
 
-/* ===== TEXTO ===== */
-h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.8em;
-    color: #d81b60;
-    margin: 10px 0 15px;
-}
-p {
-    max-width: 90%;
-    color: #444;
-    font-size: 1.2em;
-    line-height: 1.6;
-    background: rgba(255,255,255,0.6);
-    padding: 15px 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
+    /* ===== TEXTO ===== */
+    h1 {
+        color: #d81b60;
+        margin-bottom: 10px;
+    }
+    p {
+        max-width: 90%;
+        color: #444;
+        font-size: 1.1em;
+        line-height: 1.5;
+        padding: 0 10px;
+    }
 
-/* ===== CORAÇÕES FLUTUANTES ===== */
-.heart {
-    position: fixed;
-    bottom: -20px;
-    color: #ff4f8b;
-    font-size: 24px;
-    animation: floatUp 6s linear infinite;
-    opacity: 0.7;
-}
+    /* ===== ANIMAÇÕES ===== */
+    @keyframes fadeIn {
+        from {opacity: 0; transform: scale(0.9);}
+        to   {opacity: 1; transform: scale(1);}
+    }
+    /* Passa pelas 4 fotos e para na última */
+    @keyframes slideShow {
+        0%   {transform: translateX(0%);}        /* 1ª foto */
+        25%  {transform: translateX(-100%);}     /* 2ª foto */
+        50%  {transform: translateX(-200%);}     /* 3ª foto */
+        75%  {transform: translateX(-300%);}     /* 4ª foto */
+        100% {transform: translateX(-300%);}     /* mantém a 4ª foto */
+    }
 
-/* ===== ANIMAÇÕES ===== */
-@keyframes fadeIn {
-    from {opacity: 0; transform: scale(0.9);}
-    to   {opacity: 1; transform: scale(1);}
-}
-@keyframes slideShow {
-    0%   {transform: translateX(0%);}
-    25%  {transform: translateX(-100%);}
-    50%  {transform: translateX(-200%);}
-    75%  {transform: translateX(-300%);}
-    100% {transform: translateX(0%);}
-}
-@keyframes floatUp {
-    0% {transform: translateY(0) scale(1);}
-    100% {transform: translateY(-120vh) scale(1.5);}
-}
-
-/* ===== RESPONSIVO PARA IPHONE 13 ===== */
-@media (max-width: 430px) {
-    h1 {font-size: 2.2em;}
-    p  {font-size: 1.1em;}
-    #btn-inicio {font-size: 1.2em; padding: 16px 30px;}
-}
+    /* ===== Ajuste para iPhone 13 e telas pequenas ===== */
+    @media screen and (max-width: 430px) {
+        .slider {
+            height: 250px;
+            max-width: 95%;
+        }
+        h1 {
+            font-size: 1.9em;
+        }
+        p {
+            font-size: 1.05em;
+        }
+        #btn-inicio {
+            font-size: 1.2em;
+            padding: 16px 30px;
+        }
+    }
 </style>
 </head>
 <body>
@@ -138,53 +123,37 @@ p {
 <div id="surpresa">
     <div class="slider">
         <div class="slides">
-            <img src="1.jpeg" alt="Nós 1">
-            <img src="2.jpeg" alt="Nós 2">
-            <img src="3.jpeg" alt="Nós 3">
-            <img src="4.jpeg" alt="Nós 4">
+            <img src="1.jpg" alt="Nós 1">
+            <img src="2.jpg" alt="Nós 2">
+            <img src="3.jpg" alt="Nós 3">
+            <img src="4.jpg" alt="Nós 4">
         </div>
     </div>
 
     <h1>Feliz 3 Meses! 💕</h1>
-      <p>
-    Hoje celebramos três meses de uma história que já enche minha vida de cor e sentido.
-    Em cada sorriso teu encontro abrigo, em cada abraço, um pedaço de eternidade.
-    Com você, o tempo parece dançar — leve, infinito — como se cada instante fosse feito para guardar.
-    Que os próximos capítulos sejam repletos de sonhos partilhados, risadas que ecoem na memória
-    e um amor que, mesmo em silêncio, fale mais do que mil palavras.
-    Obrigado por ser o meu melhor acaso, a minha paz e o meu lar.
+    <p>
+        Hoje celebramos três meses de uma história que já enche minha vida de cor e sentido.
+        Em cada sorriso teu encontro abrigo, em cada abraço, um pedaço de eternidade.
+        Com você, o tempo parece dançar — leve, infinito — como se cada instante fosse feito para guardar.
+        Que os próximos capítulos sejam repletos de sonhos partilhados, risadas que ecoem na memória
+        e um amor que, mesmo em silêncio, fale mais do que mil palavras.
+        Obrigado por ser o meu melhor acaso, a minha paz e o meu lar.
     </p>
-
 </div>
 
 <!-- Música opcional -->
-<audio id="musica" src="sua-musica.mp3"></audio>
+<audio id="musica" src="ad2.mp3"></audio>
 
 <script>
-const btn = document.getElementById('btn-inicio');
-const surpresa = document.getElementById('surpresa');
-const musica = document.getElementById('musica');
+    const btn = document.getElementById('btn-inicio');
+    const surpresa = document.getElementById('surpresa');
+    const musica = document.getElementById('musica');
 
-btn.addEventListener('click', () => {
-    btn.style.display = 'none';
-    surpresa.style.display = 'flex';
-    musica.play().catch(()=>{}); // evita erro caso o autoplay seja bloqueado
-    criarCoracoes();
-});
-
-// Função para corações flutuantes
-function criarCoracoes(){
-    setInterval(() => {
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-        heart.innerHTML = '💖';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.fontSize = (20 + Math.random() * 30) + 'px';
-        heart.style.animationDuration = (4 + Math.random() * 4) + 's';
-        document.body.appendChild(heart);
-        setTimeout(()=> heart.remove(), 8000);
-    }, 500);
-}
+    btn.addEventListener('click', () => {
+        btn.style.display = 'none';
+        surpresa.style.display = 'flex';
+        musica.play(); // toca a música após o clique
+    });
 </script>
 
 </body>
