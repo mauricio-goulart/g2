@@ -5,132 +5,89 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Feliz 3 Meses</title>
 <style>
-    /* ===== ESTILO GERAL ===== */
-    body {
-        margin: 0;
-        font-family: 'Helvetica Neue', sans-serif;
-        background: #fce4ec;   /* Rosa clarinho */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        overflow: hidden;
-        text-align: center;
-    }
+/* ===== FUNDO E CORAÇÕES ===== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    background: linear-gradient(135deg,#ffe4f0 0%, #ffc1d9 100%);
+}
 
-    /* ===== BOTÃO INICIAL ===== */
-    #btn-inicio {
-        padding: 18px 35px;
-        font-size: 1.3em;
-        color: white;
-        background-image: linear-gradient(45deg, #ff4081, #d81b60);
-        border: none;
-        border-radius: 50px;
-        cursor: pointer;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
-    }
-    #btn-inicio:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    }
+/* coraçõezinhos flutuando */
+.heart {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: #ff4081;
+    transform: rotate(45deg);
+    animation: float 12s infinite ease-in;
+    opacity: 0.7;
+}
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ff4081;
+    border-radius: 50%;
+}
+.heart::before { top: -10px; left: 0; }
+.heart::after  { left: -10px; top: 0; }
 
-    /* ===== CONTEÚDO SURPRESA ===== */
-    #surpresa {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        animation: fadeIn 1.2s ease;
-        width: 100%;
-        height: 100%;
-    }
+@keyframes float {
+    0%   { transform: translateY(100vh) rotate(45deg); opacity: 0.7;}
+    100% { transform: translateY(-10vh) rotate(45deg); opacity: 0;}
+}
 
-    /* ===== SLIDES ===== */
-    .slider {
-        position: relative;
-        width: 90%;
-        max-width: 500px;
-        height: 300px;
-        overflow: hidden;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-        margin-bottom: 25px;
-    }
-    .slides {
-        display: flex;
-        width: 300%; /* 3 imagens */
-        height: 100%;
-        animation: slideShow 12s infinite;
-    }
-    .slides img {
-        width: 100%;
-        object-fit: cover;
-    }
+/* ===== BOTÃO INICIAL ===== */
+#btn-inicio {
+    padding: 18px 40px;
+    font-size: 1.4em;
+    color: white;
+    background-image: linear-gradient(45deg, #ff5fa2, #ff4081, #d81b60);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+#btn-inicio:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+}
 
-    /* ===== TEXTO ===== */
-    h1 {
-        color: #d81b60;
-        margin-bottom: 10px;
-    }
-    p {
-        max-width: 90%;
-        color: #444;
-        font-size: 1.1em;
-        line-height: 1.5;
-    }
+/* ===== CONTEÚDO SURPRESA ===== */
+#surpresa {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 1.5s ease;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
 
-    /* ===== ANIMAÇÕES ===== */
-    @keyframes fadeIn {
-        from {opacity: 0; transform: scale(0.9);}
-        to   {opacity: 1; transform: scale(1);}
-    }
-    @keyframes slideShow {
-        0%   {transform: translateX(0%);}
-        33%  {transform: translateX(-100%);}
-        66%  {transform: translateX(-200%);}
-        100% {transform: translateX(0%);}
-    }
-</style>
-</head>
-<body>
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to   {opacity: 1; transform: scale(1);}
+}
 
-<!-- TELA INICIAL -->
-<button id="btn-inicio">Clique aqui 💖</button>
-
-<!-- SURPRESA -->
-<div id="surpresa">
-    <div class="slider">
-        <div class="slides">
-            <img src="1.jpg" alt="Nós 1">
-            <img src="2.jpg" alt="Nós 2">
-            <img src="3.jpg" alt="Nós 3">
-            <img src="4.jpg" alt="Nós 4">
-
-        </div>
-    </div>
-
-    <h1>Feliz 3 meses! 💕</h1>
-    <p>
-        Obrigado por cada momento lindo ao seu lado.  
-        Que venham muitos outros meses de amor, risadas  
-        e sonhos compartilhados. Você é meu presente mais especial!
-    </p>
-</div>
-
-<!-- Música opcional -->
-<audio id="musica" src="sua-musica.mp3"></audio>
-
-<script>
-    const btn = document.getElementById('btn-inicio');
-    const surpresa = document.getElementById('surpresa');
-    const musica = document.getElementById('musica');
-
-    btn.addEventListener('click', () => {
-        btn.style.display = 'none';
-        surpresa.style.display = 'flex';
-        musica.play(); // remova esta linha se não quiser música
-    });
-</script>
-
-</body>
-</html>
+/* ===== SLIDES ===== */
+.slider {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    height: 320px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    margin-bottom: 30px;
+}
+.slid
