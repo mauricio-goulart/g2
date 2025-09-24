@@ -3,64 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Feliz 3 Meses</title>
+<title>Feliz 3 Meses !</title>
+
+<!-- ===== FONTE ROMÂNTICA ===== -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
-/* ===== FUNDO E CORAÇÕES ===== */
-body {
+/* ===== RESET E BASE ===== */
+* {
     margin: 0;
-    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
-    height: 100vh;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #ffd6e8 0%, #fff0f5 100%);
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    min-height: 100vh;
     overflow: hidden;
-    background: linear-gradient(135deg,#ffe4f0 0%, #ffc1d9 100%);
-}
-
-/* coraçõezinhos flutuando */
-.heart {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    background: #ff4081;
-    transform: rotate(45deg);
-    animation: float 12s infinite ease-in;
-    opacity: 0.7;
-}
-.heart::before,
-.heart::after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: #ff4081;
-    border-radius: 50%;
-}
-.heart::before { top: -10px; left: 0; }
-.heart::after  { left: -10px; top: 0; }
-
-@keyframes float {
-    0%   { transform: translateY(100vh) rotate(45deg); opacity: 0.7;}
-    100% { transform: translateY(-10vh) rotate(45deg); opacity: 0;}
+    text-align: center;
+    padding: 20px;
 }
 
 /* ===== BOTÃO INICIAL ===== */
 #btn-inicio {
     padding: 18px 40px;
     font-size: 1.4em;
-    color: white;
-    background-image: linear-gradient(45deg, #ff5fa2, #ff4081, #d81b60);
+    color: #fff;
+    background: linear-gradient(45deg, #ff4f8b, #d81b60);
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
     transition: all 0.3s ease;
-    z-index: 2;
 }
 #btn-inicio:hover {
-    transform: scale(1.08);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+    transform: scale(1.07);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
 }
 
 /* ===== CONTEÚDO SURPRESA ===== */
@@ -68,26 +49,76 @@ body {
     display: none;
     flex-direction: column;
     align-items: center;
-    animation: fadeIn 1.5s ease;
+    animation: fadeIn 1.2s ease forwards;
     width: 100%;
-    height: 100%;
-    z-index: 1;
+    max-width: 600px;
 }
 
+/* ===== SLIDER ===== */
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    margin-bottom: 25px;
+}
+.slides {
+    display: flex;
+    width: 400%; /* 4 imagens */
+    height: 100%;
+    animation: slideShow 16s infinite;
+}
+.slides img {
+    width: 100%;
+    object-fit: cover;
+}
+
+/* ===== TEXTO ===== */
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8em;
+    color: #d81b60;
+    margin: 10px 0 15px;
+}
+p {
+    max-width: 90%;
+    color: #444;
+    font-size: 1.2em;
+    line-height: 1.6;
+    background: rgba(255,255,255,0.6);
+    padding: 15px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ===== CORAÇÕES FLUTUANTES ===== */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    color: #ff4f8b;
+    font-size: 24px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.7;
+}
+
+/* ===== ANIMAÇÕES ===== */
 @keyframes fadeIn {
     from {opacity: 0; transform: scale(0.9);}
     to   {opacity: 1; transform: scale(1);}
 }
-
-/* ===== SLIDES ===== */
-.slider {
-    position: relative;
-    width: 90%;
-    max-width: 500px;
-    height: 320px;
-    overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    margin-bottom: 30px;
+@keyframes slideShow {
+    0%   {transform: translateX(0%);}
+    25%  {transform: translateX(-100%);}
+    50%  {transform: translateX(-200%);}
+    75%  {transform: translateX(-300%);}
+    100% {transform: translateX(0%);}
 }
-.slid
+@keyframes floatUp {
+    0% {transform: translateY(0) scale(1);}
+    100% {transform: translateY(-120vh) scale(1.5);}
+}
+
+/* ====*
